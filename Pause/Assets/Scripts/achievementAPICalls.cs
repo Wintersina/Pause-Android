@@ -5,7 +5,7 @@ using UnityEngine.SocialPlatforms;
 
 
 // This class does api calls for android or iOs achivments. Depending on their respected phone version.
-// All achv are list below, reffer to google API for achi definition. 
+// All achv are list below, reffer to google API for achi definition.  :D
 
 public class achievementAPICalls : MonoBehaviour
 {
