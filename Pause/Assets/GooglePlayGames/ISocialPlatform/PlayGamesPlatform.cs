@@ -829,7 +829,11 @@ namespace GooglePlayGames
             {
                 GooglePlayGames.OurUtils.Logger.e(
                     "LoadAchievementDescriptions can only be called after authentication.");
-                callback.Invoke(null);
+                if (callback != null)
+                {
+                    callback.Invoke(null);
+                }
+                return;
             }
 
             mClient.LoadAchievements(ach =>
@@ -1120,7 +1124,10 @@ namespace GooglePlayGames
             if (!IsAuthenticated())
             {
                 GooglePlayGames.OurUtils.Logger.e("ShowLeaderboardUI can only be called after authentication.");
-                callback(UIStatus.NotAuthorized);
+                if (callback != null)
+                {
+                    callback(UIStatus.NotAuthorized);
+                }
                 return;
             }
 

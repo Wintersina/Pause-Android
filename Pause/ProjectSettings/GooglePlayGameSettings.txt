@@ -1,5 +1,5 @@
-lastUpgrade=00933
-proj.pluginVersion=0.9.33
+lastUpgrade=00934
+proj.pluginVersion=0.9.34
 proj.AppId=976061952733
 and.BundleId=me.sinaserati.Pause
 proj.classDir=Assets
