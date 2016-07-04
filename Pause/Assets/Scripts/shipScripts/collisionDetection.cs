@@ -13,12 +13,10 @@ public class collisionDetection : MonoBehaviour {
     private static float savedTimer;
     public static float invTimer;
     private float boostTimer;
-    public Text atomText;
+    public Text atomTimerText;
     public Text hypeText;
     public Text boostText;
-    public Text destructionComboText;
     private int atomCounter;
-    private int DestructionCounter;
     private string[] savedString = new string[12];
 
     public GameObject shield;
@@ -31,15 +29,15 @@ public class collisionDetection : MonoBehaviour {
 
 
         // Fills the needed componets for this player.
-        atomText = GameObject.Find("gotAtomText").GetComponent<Text>();
+        atomTimerText = GameObject.Find("gotAtomText").GetComponent<Text>();
         hypeText = GameObject.Find("hypeText").GetComponent<Text>();
         boostText = GameObject.Find("boostText").GetComponent<Text>();
-        destructionComboText = GameObject.Find("DestructionText").GetComponent<Text>();
+        //destructionComboText = GameObject.Find("DestructionText").GetComponent<Text>();
         boost = GameObject.FindGameObjectWithTag("boost");
         boost.gameObject.SetActive(false);
 
 
-        destructionComboText.gameObject.SetActive(false);
+        //destructionComboText.gameObject.SetActive(false);
     
 
         //source.clip = boostSound;
@@ -48,14 +46,12 @@ public class collisionDetection : MonoBehaviour {
         atomCheck = false;
 
         // empty out any text or counters
-        atomText.text = "";
-        destructionComboText.text = "";
+        atomTimerText.text = "";
         atomCounter = 0;
-        DestructionCounter = 0;
 
         // create an array of  string for  hyped words
 
-        savedString[0] = "!!!";
+        savedString[0] = "POOF!";
         savedString[1] = "DANG!";
         savedString[2] = "BOOM!!";
         savedString[3] = "MAYHEM!";
@@ -141,30 +137,14 @@ public class collisionDetection : MonoBehaviour {
 
 
                 //show random texts as user hits and destroyes obsticals
-                if (DestructionCounter <= 10)
-                {
-                    hypeText.text = savedString[DestructionCounter];
-                }
-                else
-                    hypeText.text = savedString[10];
 
+                hypeText.text = savedString[Random.Range(0,10)];
 
                 // create explotion and show it on the objets position.
                 GameObject exp = Instantiate(explosionAnimation) as GameObject;
                 exp.transform.position = hit.gameObject.transform.position;
                 Destroy(exp, 2);
 
-
-                DestructionCounter++;
-                // show combo text
-                if (DestructionCounter > 0)
-                {
-                    destructionComboText.gameObject.SetActive(true);
-                }
-                destructionComboText.text = "Combo Counter:  " + DestructionCounter + "X";
-
-                // count score per destroyed item if in tutorial or not
-                if (PlayerPrefs.GetString("HasDoneTut") == "true") score.totalCurrency += 1 * DestructionCounter; else score.tutorialCurrency += 1 * DestructionCounter;
 
                 // open memory and remove leftovers
                 Destroy(hit.gameObject);
@@ -239,7 +219,7 @@ public class collisionDetection : MonoBehaviour {
 
                 shield.SetActive(true);
                 if (PlayerPrefs.GetString("HasDoneTut") == "true") score.totalCurrency += 5; else score.tutorialCurrency += 5;
-                atomText.text = "0.00";
+                atomTimerText.text = "0.00";
                 boostText.text = "Boost!";
                 Destroy(hit.gameObject);
 
@@ -263,7 +243,7 @@ public class collisionDetection : MonoBehaviour {
         boostTimer -= Time.deltaTime;
         if (atomCheck)
         {
-            atomText.text = invTimer.ToString("F2");     
+            atomTimerText.text = invTimer.ToString("F2");     
            
         }
 
@@ -274,13 +254,10 @@ public class collisionDetection : MonoBehaviour {
             shield.SetActive(false);
             boost.SetActive(false);
             // let player know shild is off
-            atomText.text = "";
+            atomTimerText.text = "";
             atomCheck = false;
             moveBackGround.speed -= .05f * atomCounter;
             atomCounter = 0;
-            // remove destruction timer
-            DestructionCounter = 0;
-            destructionComboText.gameObject.SetActive(false);
 
             // ---------------------------
             //   Music control section!

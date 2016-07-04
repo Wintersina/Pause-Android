@@ -193,7 +193,7 @@ public class enmiesOnBoard : MonoBehaviour {
     void spawnMidAstroid()
     {
         Vector3 randomEnmPosition = new Vector3(Random.Range(-2.3f, 2f), transform.position.y, transform.rotation.z);
-        int max = Random.Range(1, 3);
+
         // spawn 3 enimies at the same time
              Instantiate(astroid4[astroidSelector], randomEnmPosition, transform.rotation);
                 
