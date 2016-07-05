@@ -37,10 +37,10 @@ public class playerIsDead : MonoBehaviour {
     }
     void showHighScoreAfterPlayerDied(int c_s)
     {
-       deathHighScoreText.text = "Star Dust: " + PlayerPrefs.GetFloat("PlayerCurrecny").ToString("F2");
+       deathHighScoreText.text = "Star Dust \n " + PlayerPrefs.GetFloat("PlayerCurrecny").ToString("F2");
         
-        deathHighestSpeedText.text = "Top Speed: /n " + PlayerPrefs.GetFloat("HighestSpeed");
-        deathSpeedReachedThisRoundText.text = "Your Speed: /n" + c_s.ToString();
+        deathHighestSpeedText.text = "BEST \n " + PlayerPrefs.GetFloat("HighestSpeed");
+        deathSpeedReachedThisRoundText.text = "Your Speed \n" + c_s.ToString();
         deathHighScoreText.gameObject.SetActive(true);
        deathHighestSpeedText.gameObject.SetActive(true);
         deathSpeedReachedThisRoundText.gameObject.SetActive(true);

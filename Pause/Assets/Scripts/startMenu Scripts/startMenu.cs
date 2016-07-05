@@ -21,28 +21,7 @@ public class startMenu : MonoBehaviour {
 
         PlayGamesPlatform.Activate();
 
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            Social.localUser.Authenticate((bool success) =>
-            {
-                if (success)
-                {
-
-                    //----------------------------Logged in Achivment ---------------------------
-                    achievementAPICalls.achievement_logged_on_successfully();
-
-                    //---------------------------------------------------------------------------
-                }
-            });
-        }
-        else if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            //----------- Loginto Iphone here -------------  ##00
-
-
-
-            // Log user into their iPhone here
-        }
+        
     }
     void Start()
     {
@@ -121,5 +100,26 @@ public class startMenu : MonoBehaviour {
     public void quit()
     {
         Application.Quit();
+
+    }
+    public void login()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            Social.localUser.Authenticate((bool success) =>
+            {
+                if (success)
+                {
+                    //----------------------------Logged in Achivment -------------#00--------------
+                    achievementAPICalls.achievement_logged_on_successfully();
+                    //---------------------------------------------------------------------------
+                }
+            });
+        }
+        else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            //----------- Loginto Iphone here -------------  ##00
+            // Log user into their iPhone here
+        }
     }
 }

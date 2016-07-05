@@ -17,7 +17,7 @@ public class collisionDetection : MonoBehaviour {
     public Text hypeText;
     public Text boostText;
     private int atomCounter;
-    private string[] savedString = new string[12];
+    //private string[] savedString = new string[12];
 
     public GameObject shield;
     public GameObject explosionAnimation;
@@ -50,7 +50,7 @@ public class collisionDetection : MonoBehaviour {
         atomCounter = 0;
 
         // create an array of  string for  hyped words
-
+        /*
         savedString[0] = "POOF!";
         savedString[1] = "DANG!";
         savedString[2] = "BOOM!!";
@@ -64,7 +64,7 @@ public class collisionDetection : MonoBehaviour {
         savedString[10] = "EXTERMINATOR!";
         // killing it
         // How??
-
+        */
     }
 	
 	// Update is called once per frame
@@ -138,17 +138,19 @@ public class collisionDetection : MonoBehaviour {
 
                 //show random texts as user hits and destroyes obsticals
 
-                hypeText.text = savedString[Random.Range(0,10)];
+                //hypeText.text = savedString[Random.Range(0,10)];
 
                 // create explotion and show it on the objets position.
                 GameObject exp = Instantiate(explosionAnimation) as GameObject;
                 exp.transform.position = hit.gameObject.transform.position;
+
                 Destroy(exp, 2);
-
-
-                // open memory and remove leftovers
                 Destroy(hit.gameObject);
-
+                
+                
+                
+            
+                // open memory and remove leftovers
             }
             else {
                 Vector3 shipPos = this.gameObject.transform.position;

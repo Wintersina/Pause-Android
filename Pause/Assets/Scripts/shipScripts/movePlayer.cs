@@ -61,7 +61,7 @@ public class movePlayer : MonoBehaviour
     {
         //gets a position of the finger on the screen
         //checks position of finger is in bound box
-        if (fingerPos.x <= 2.4 && fingerPos.x > -2.4)
+        if (fingerPos.x <= 2.4 && fingerPos.x > -2.4 && fingerPos.y <= 3f)
         {
             this.transform.position = new Vector3(fingerPos.x, fingerPos.y + 1.5f);
 
@@ -76,16 +76,23 @@ public class movePlayer : MonoBehaviour
 
             //--------------------------------------------------------
         }
-        else if (fingerPos.x > 2.4)
+        else if (fingerPos.x > 2.4)  
         {
-            this.transform.position = new Vector3(2.4f, fingerPos.y + 1.5f);
+            if (fingerPos.y > 3f)
+                this.transform.position = new Vector3(2.4f, 4.5f);
+             else
+                this.transform.position = new Vector3(2.4f, fingerPos.y + 1.5f);
         }
         else if (fingerPos.x < -2.4)
-        {
-            this.transform.position = new Vector3(-2.4f, fingerPos.y + 1.5f);
-
+        { 
+            if (fingerPos.y > 3f)
+                this.transform.position = new Vector3(-2.4f, 4.5f);
+            else
+                this.transform.position = new Vector3(-2.4f, fingerPos.y + 1.5f);
         }
-        
+        else if(fingerPos.y > 3f)
+        {
+            this.transform.position = new Vector3(fingerPos.x, 4.5f);
+        }
     }
-
 }
