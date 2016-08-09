@@ -69,6 +69,8 @@ public class rotateRight : MonoBehaviour {
             }
         }
         if (flyOffTimer <= 0)
+        {
             SceneManager.LoadScene("gameS1");
+        }
     }
 }
