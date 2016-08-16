@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/shopS6.unity
+- path: Assets/spashS7.unity
   isLoaded: 1
   isActive: 1
