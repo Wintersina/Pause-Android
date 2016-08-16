@@ -63,6 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Pause.CSharp.Plugins.csproj">
+      <Project>{222616A5-2F6F-68D7-69ED-65821206DE07}</Project>
+      <Name>Pause.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\GooglePlayGames\BasicApi\Achievement.cs" />
     <Compile Include="Assets\GooglePlayGames\BasicApi\CommonStatusCodes.cs" />
     <Compile Include="Assets\GooglePlayGames\BasicApi\CommonTypes.cs" />
@@ -240,6 +246,7 @@
     <Compile Include="Assets\GooglePlayGames\Platforms\PlayGamesClientFactory.cs" />
     <Compile Include="Assets\GooglePlayGames\Platforms\TokenClient.cs" />
     <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
+    <Compile Include="Assets\Scripts\AdMob.cs" />
     <Compile Include="Assets\Scripts\CreditsScripts\CreditsMove.cs" />
     <Compile Include="Assets\Scripts\CreditsScripts\everythingCredit.cs" />
     <Compile Include="Assets\Scripts\Tutorial Scripts\Hints.cs" />
@@ -286,6 +293,7 @@
     <Compile Include="Assets\Scripts\startMenu Scripts\startMenu.cs" />
     <Compile Include="Assets\Scripts\stopAnimationOfBoost.cs" />
     <Compile Include="Assets\StringHolder.cs" />
+    <Compile Include="Assets\admobdemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\GameAssets\Orbitron\OFL.txt" />
@@ -294,6 +302,7 @@
     <None Include="Assets\GooglePlayGames\Editor\template-AndroidManifest.txt" />
     <None Include="Assets\GooglePlayGames\Editor\template-Constants.txt" />
     <None Include="Assets\GooglePlayGames\Editor\template-GameInfo.txt" />
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Plugins\Android\MainLibProj\AndroidManifest.xml" />
     <None Include="Assets\Plugins\Android\res\values\version.xml" />
   </ItemGroup>

@@ -82,20 +82,24 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="JarResolverLib">
       <HintPath>Assets\PlayServicesResolver\Editor\JarResolverLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Pause.CSharp.Plugins.csproj">
+      <Project>{222616A5-2F6F-68D7-69ED-65821206DE07}</Project>
+      <Name>Pause.CSharp.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="Pause.CSharp.csproj">
       <Project>{9B49FF8E-9035-E0C4-E372-2654535FB49A}</Project>
       <Name>Pause.CSharp</Name>
@@ -138,6 +142,7 @@
     <None Include="Assets\GooglePlayGames\Editor\template-AndroidManifest.txt" />
     <None Include="Assets\GooglePlayGames\Editor\template-Constants.txt" />
     <None Include="Assets\GooglePlayGames\Editor\template-GameInfo.txt" />
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Plugins\Android\MainLibProj\AndroidManifest.xml" />
     <None Include="Assets\Plugins\Android\res\values\version.xml" />
   </ItemGroup>
