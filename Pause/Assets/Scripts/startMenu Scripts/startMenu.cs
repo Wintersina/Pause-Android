@@ -16,15 +16,9 @@ public class startMenu : MonoBehaviour {
     private float logoutTimer;
 
 
-    void Awake()
-    {
-
-        PlayGamesPlatform.Activate();
-
-        
-    }
     void Start()
     {
+        PlayGamesPlatform.Activate();
         Time.timeScale = 1;
         // initilize all game materials
         logoutTimer = 0;
@@ -116,10 +110,6 @@ public class startMenu : MonoBehaviour {
                 }
             });
         }
-        else if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            //----------- Loginto Iphone here -------------  ##00
-            // Log user into their iPhone here
-        }
+
     }
 }
