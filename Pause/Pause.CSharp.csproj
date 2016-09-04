@@ -296,10 +296,12 @@
     <Compile Include="Assets\Scripts\Tutorial Scripts\spawnGoodStuffTut.cs" />
     <Compile Include="Assets\Scripts\Tutorial Scripts\tutButtonClicks.cs" />
     <Compile Include="Assets\Scripts\achievementAPICalls.cs" />
+    <Compile Include="Assets\Scripts\admobS1.cs" />
     <Compile Include="Assets\Scripts\backButton.cs" />
     <Compile Include="Assets\Scripts\bringToFront.cs" />
     <Compile Include="Assets\Scripts\buttonClicks.cs" />
     <Compile Include="Assets\Scripts\destoryAnything.cs" />
+    <Compile Include="Assets\Scripts\destroyThis.cs" />
     <Compile Include="Assets\Scripts\easterEggs.cs" />
     <Compile Include="Assets\Scripts\enmiesOnBoard.cs" />
     <Compile Include="Assets\Scripts\iconControl.cs" />

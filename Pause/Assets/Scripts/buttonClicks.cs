@@ -13,29 +13,43 @@ public class buttonClicks : MonoBehaviour {
         gameS1 = "gameS1";
         playerDied = false;
         popUpCanvas.gameObject.SetActive(false);
+
+        //hide the ads at the start
+        if (AdMob.isAdsShowwing)
+            AdMob.hide();
      
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if(playerDied)
+
+    // Update is called once per frame
+    void Update() {
+
+        if (playerDied)
         {
+            //show the ads if the player dies
             showButton();
-            
+
         }
+        else if (AdMob.isAdsShowwing)
+            AdMob.hide();
+
         if (Application.platform == RuntimePlatform.Android && Input.touchCount == 0)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                if (AdMob.isAdsShowwing)
+                    AdMob.hide();
                 SceneManager.LoadScene("startS4");
                 return;
             }
         }
+        // This is ads method to show ads when player is dead.
+    
 
 
     }
     public void replay()
     {
+        
         startMenu.youAreInTutorial = false;
         moveBackGround.speed = 0f;
         score.totalCurrency = 0;
@@ -43,16 +57,20 @@ public class buttonClicks : MonoBehaviour {
     }
     public void quit()
     {
+        if (AdMob.isAdsShowwing)
+            AdMob.hide();
         Application.Quit();
     }
     void showButton()
     {
         // save the highscore and speed
-
+        AdMob.show();
         popUpCanvas.gameObject.SetActive(true);
     }
     public void mainMenuButton()
     {
+        if(AdMob.isAdsShowwing)
+            AdMob.hide();
         SceneManager.LoadScene("startS4");
     }
 }

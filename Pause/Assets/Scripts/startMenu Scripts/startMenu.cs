@@ -18,6 +18,7 @@ public class startMenu : MonoBehaviour {
 
     void Start()
     {
+        
         PlayGamesPlatform.Activate();
         Time.timeScale = 1;
         // initilize all game materials
@@ -31,6 +32,9 @@ public class startMenu : MonoBehaviour {
         // find it and turn it off.
         loggedoutTextObj = GameObject.Find("LoggedoutText").GetComponent<Text>();
         loggedoutTextObj.gameObject.SetActive(false);
+        // if ads are showing in main menu, turn them off.
+        if (AdMob.isAdsShowwing)
+            AdMob.hide();
     }
 
     // Update is called once per frame

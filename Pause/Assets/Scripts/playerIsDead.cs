@@ -7,7 +7,7 @@ public class playerIsDead : MonoBehaviour {
     public Text deathHighScoreText; //currency
     public Text deathHighestSpeedText; //speed
     public Text deathSpeedReachedThisRoundText; //temp speed
-    private bool callthisonce;
+    private bool callthisonce; // this is used so that the score is only updated once.
 
     // Use this for initialization
     void Awake()

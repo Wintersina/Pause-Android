@@ -15,6 +15,11 @@ public class backButton : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                // if you push the back key, turn off ads
+                if (AdMob.isAdsShowwing)
+                {
+                    AdMob.hide();
+                }
                 SceneManager.LoadScene("startS4");
                 return;
             }

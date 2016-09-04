@@ -17,7 +17,7 @@ public class score : MonoBehaviour {
     private const int TUTPAUSECOUNTER = 50;
 
 
-
+    // at awake, load up all the correct numbers for scores.
     void Awake()
     {
         

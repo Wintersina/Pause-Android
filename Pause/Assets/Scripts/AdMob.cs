@@ -1,51 +1,65 @@
 ﻿using UnityEngine;
-using System.Collections;
-using admob;
+using GoogleMobileAds.Api;
 
+
+// This class will display adds in the game only when the player is dead for seconds at a time.
+// This class was made by Sina Serat
+// 9/3/2016
+// 
 public class AdMob : MonoBehaviour {
 
-	public static AdMob Instance{ set; get; }
+  
+    private static bool isAdLoaded = false;
+    private static BannerView bannerView;
+    public static bool isAdsShowwing = true;
 
-	private string bannerId= "ca-app-pub-6947554333794592/9092756042";
-    private float timerBeforeAdsStart;
-    private bool runTimer;
-    // Use this for initialization
-    void Start () {
-        timerBeforeAdsStart = 4f;
-        runTimer = true;    
-	
+    void Start()
+    {
+       
     }
-
     void Update()
     {
-        timerBeforeAdsStart -= Time.deltaTime;
-        if (timerBeforeAdsStart <= 0 && runTimer)
+        if (!isAdLoaded)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-#if UNITY_EDITOR
-            Debug.Log("adds are going to be shown.");
-#elif UNITY_ANDROID
-		    Admob.Instance().initAdmob(bannerId, "non");
-		    Admob.Instance().setTesting(true);
-#endif
-#if UNITY_EDITOR
-            Debug.Log("adds are being shown.");
-#elif UNITY_ANDROID
-		    Admob.Instance().showBannerRelative(AdSize.Banner, AdPosition.TOP_CENTER, 0);
-#endif
-            runTimer = false;
-
+            RequestBanner();
         }
     }
 
-
-    public void displayAdds(){
-        #if UNITY_EDITOR
-                Debug.Log("adds are being shown.");
-        #elif UNITY_ANDROID
-		            Admob.Instance().showBannerRelative(AdSize.Banner, AdPosition.TOP_CENTER, 0);
+    // this method is only called once at the start of the game
+    private void RequestBanner(){
+        #if UNITY_ANDROID
+            string adUnitId = "ca-app-pub-6947554333794592/9092756042";
         #endif
 
+        // Create a 320x50 banner at the top of the screen.
+        bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+        // Load the banner with the request.
+        bannerView.LoadAd(request);
+        hide();
+        isAdLoaded = true;
+        
+}
+    // Will hide it once its called
+    public static void hide()
+    {
+        if (bannerView != null)
+        {
+            isAdsShowwing = false;
+            Debug.Log("Hiding ad");
+            bannerView.Hide();
+        }
+    }
+
+    // will show once its called
+    public static void show()
+    {
+        if (bannerView != null)
+        {
+            isAdsShowwing = true;
+            Debug.Log("Showing ad");
+            bannerView.Show();
+        }
     }
 }

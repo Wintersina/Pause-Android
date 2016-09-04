@@ -8,10 +8,7 @@ public class leaderboard : MonoBehaviour {
 
     void Start()
     {
-        #if UNITY_EDITOR
-        #elif UNITY_ANDROID
-        AdMob.Instance.displayAdds();
-        #endif
+        AdMob.show();
     }
 	public void pull_up_leaderboard () {
       
@@ -19,6 +16,8 @@ public class leaderboard : MonoBehaviour {
 	}
     public void playTut()
     {
+        if (AdMob.isAdsShowwing)
+            AdMob.hide();
         UnityEngine.SceneManagement.SceneManager.LoadScene("tutorialS5");
     }
 	
