@@ -11,6 +11,8 @@ public class movePlayer : MonoBehaviour
     private RectTransform boostText;
     private RectTransform hypeText;
     float startTimerCounter, goTimer;
+    private AudioSource goClip;
+    private bool playoneshot;
 
     void Start()
     {
@@ -19,41 +21,57 @@ public class movePlayer : MonoBehaviour
         boostText = GameObject.Find("boostText").GetComponent<RectTransform>();
         hypeText = GameObject.Find("hypeText").GetComponent<RectTransform>();
         startTimer = GameObject.Find("goText").GetComponent<Text>();
+        goClip = GameObject.Find("GOSound").GetComponent<AudioSource>();
         startTimerCounter = 2f;
-        goTimer = 1f;
+        goTimer = 2f;
+        playoneshot = true;
 
         startTimer.text = startTimerCounter.ToString("F2");
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.touchCount > 0 && Input.touchCount <= 1)
+        { 
+            
         // show start timer, give player 2 seconds to prep
-        startTimerCounter -= Time.timeSinceLevelLoad;
+            startTimerCounter -= Time.timeSinceLevelLoad;
+            startTimer.fontSize += 3;
 
-        if (startTimerCounter <= 0)
-        {
+            if (startTimerCounter <= 0)
+            {
 
-            startTimer.text = "GO!!!!";
-            goTimer -= Time.deltaTime;
-            //"GO!" end "GO" and start game
-            if (goTimer <= 0)
-            {
-                startTimer.gameObject.SetActive(false);
-            }
-            if (Input.touchCount > 0)
-            {
-                fingerPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 0));
-                textPos = Camera.main.WorldToScreenPoint(transform.position);
-            }
-            if (Input.touchCount > 0 && Input.touchCount <= 1)
+                startTimer.text = "GO!!!!";
+                if (playoneshot)
+                {
+                    goClip.Play();
+                    playoneshot = false;
+                }
+                
+                goTimer -= Time.timeSinceLevelLoad;
+                //"GO!" end "GO" and start game
+                if (goTimer <= 0)
+                {
+                    startTimer.gameObject.SetActive(false);
+                    
+                }
+                if (Input.touchCount > 0)
+                {
+                    fingerPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 0));
+                    textPos = Camera.main.WorldToScreenPoint(transform.position);
+                }
                 moveLeft_Right(fingerPos);
+            }
+            else
+            {
+                startTimer.text = startTimerCounter.ToString("F2");
+            }
+
         }
-        else
-        {
-            startTimer.text = startTimerCounter.ToString("F2");
-        }
+
     }
 
     // will move the player left and right baised on touch positions.

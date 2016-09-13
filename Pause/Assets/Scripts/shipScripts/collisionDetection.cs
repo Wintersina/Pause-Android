@@ -24,7 +24,10 @@ public class collisionDetection : MonoBehaviour {
     public GameObject blueExp;
     public GameObject redExp;
     public GameObject boost;
-	// Use this for initialization
+    // Use this for initialization
+
+    private AudioSource boostSound, astroidExpSound;
+
 	void Start () {
 
 
@@ -35,6 +38,8 @@ public class collisionDetection : MonoBehaviour {
         //destructionComboText = GameObject.Find("DestructionText").GetComponent<Text>();
         boost = GameObject.FindGameObjectWithTag("boost");
         boost.gameObject.SetActive(false);
+        boostSound = GameObject.Find("RocketsSound").GetComponent<AudioSource>();
+        astroidExpSound = GameObject.Find("AstroidExplotionSound").GetComponent<AudioSource>();
 
 
         //destructionComboText.gameObject.SetActive(false);
@@ -120,6 +125,7 @@ public class collisionDetection : MonoBehaviour {
                     achievementAPICalls.achievement_aliens_6();
                 }if(hit.gameObject.tag == "Astr")
                 {
+                    astroidExpSound.Play();
                     //------------------------- Destroy 5 Astroid ------------##14-------------------
                     achievementAPICalls.achievement_destroyer();
                     //------------------------- Destroy 25 Astroid------------##15-------------------
@@ -214,6 +220,7 @@ public class collisionDetection : MonoBehaviour {
             }
             else if(hit.gameObject.name == "atom3a(Clone)")
             {
+                boostSound.Play();
                 // ---------------------------
                 //   Music control section!
                 musicControl.boostMusicChanger = true;
