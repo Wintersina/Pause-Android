@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -9,7 +8,7 @@ public class shopingShips : MonoBehaviour {
     //if button is clicked move ship;
     public static bool buttonIsClicked;
 
-    public static int shipTotal = 12;
+    public static int shipTotal = 3;
     public static GameObject[] ships = new GameObject[shipTotal];
     public Button[] shipButtons = new Button[shipTotal];
     private string[] shipNames = new string[shipTotal];
@@ -35,7 +34,10 @@ public class shopingShips : MonoBehaviour {
     // Use this for initialization
     void Start() {
 
-  
+        // initilizing the names of ships
+        shipNames[0] = "non";
+        shipNames[1] = "Proteus";
+        shipNames[2] = "Amadeus";
 
         starDust.text = "Start Dust: " + PlayerPrefs.GetFloat("PlayerCurrecny").ToString("F2");
         buttonCanvis = GameObject.Find("Canvas");
@@ -46,31 +48,12 @@ public class shopingShips : MonoBehaviour {
 
         // initilizing the cost of ships. Each ship has a differnt cost
         shipCost[0] = 0;
-        shipCost[1] = 2000f;
+        shipCost[1] = 0f;
         shipCost[2] = 100f;
-        shipCost[3] = 500f;
-        shipCost[4] = 400f;
-        shipCost[5] = 50f;
-        shipCost[6] = 30;
-        shipCost[7] = 25;
-        shipCost[8] = 100;
-        shipCost[9] = 250;
-        shipCost[10] = 100;
+  
 
-        // initilizing the names of ships
-        shipNames[0] = "";
-        shipNames[1] = "Perry";
-        shipNames[2] = "Phaser";
-        shipNames[3] = "Turtle";
-        shipNames[4] = "Paranoid";
-        shipNames[5] = "Tutorial";
-        shipNames[6] = "Classic";
-        shipNames[7] = "Desert";
-        shipNames[8] = "Saucer";
-        shipNames[9] = "Ovary";
-        shipNames[10] = "Ninja";
-        shipNames[11] = "NASA2095";
-
+        
+  
         // setting index zeros to null for having an empty object
         ships[0] = null;
         shipButtons[0] = null;

@@ -14,7 +14,7 @@ public class spawnShips : MonoBehaviour {
         //will spawn ship corrosponding to what user selected
         if (PlayerPrefs.GetInt("spawnShip") == 0)
         {
-            ship = (GameObject)Resources.Load("prefabs/Ships/inGameShips/ship5", typeof(GameObject));
+            ship = (GameObject)Resources.Load("prefabs/Ships/inGameShips/ship1", typeof(GameObject));
         }
         else {
             if (PlayerPrefs.GetString("boughtship"+ PlayerPrefs.GetInt("spawnShip").ToString()) == "True")
@@ -23,7 +23,7 @@ public class spawnShips : MonoBehaviour {
             }
             else
             {
-                ship = (GameObject)Resources.Load("prefabs/Ships/inGameShips/ship5", typeof(GameObject));
+                ship = (GameObject)Resources.Load("prefabs/Ships/inGameShips/ship1", typeof(GameObject));
             }
         }
            

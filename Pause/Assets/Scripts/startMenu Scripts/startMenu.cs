@@ -18,7 +18,7 @@ public class startMenu : MonoBehaviour {
 
     void Start()
     {
-        
+
         PlayGamesPlatform.Activate();
         Time.timeScale = 1;
         // initilize all game materials

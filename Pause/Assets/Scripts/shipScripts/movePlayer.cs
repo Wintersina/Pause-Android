@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 public class movePlayer : MonoBehaviour
 {
@@ -13,9 +12,11 @@ public class movePlayer : MonoBehaviour
     float startTimerCounter, goTimer;
     private AudioSource goClip;
     private bool playoneshot;
+    private bool teleported;
 
     void Start()
     {
+        teleported = false;
         //shild timer;
         //atomTimerText = GameObject.Find("gotAtomText").GetComponent<RectTransform>();
         boostText = GameObject.Find("boostText").GetComponent<RectTransform>();
@@ -35,9 +36,9 @@ public class movePlayer : MonoBehaviour
     void Update()
     {
         if (Input.touchCount > 0 && Input.touchCount <= 1)
-        { 
-            
-        // show start timer, give player 2 seconds to prep
+        {
+
+            // show start timer, give player 2 seconds to prep
             startTimerCounter -= Time.timeSinceLevelLoad;
             startTimer.fontSize += 3;
 
@@ -50,19 +51,21 @@ public class movePlayer : MonoBehaviour
                     goClip.Play();
                     playoneshot = false;
                 }
-                
+
                 goTimer -= Time.timeSinceLevelLoad;
                 //"GO!" end "GO" and start game
                 if (goTimer <= 0)
                 {
                     startTimer.gameObject.SetActive(false);
-                    
+
                 }
                 if (Input.touchCount > 0)
                 {
                     fingerPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 0));
                     textPos = Camera.main.WorldToScreenPoint(transform.position);
                 }
+                else
+                    teleported = true;
                 moveLeft_Right(fingerPos);
             }
             else
@@ -71,6 +74,8 @@ public class movePlayer : MonoBehaviour
             }
 
         }
+        else
+            teleported = true;
 
     }
 
@@ -81,8 +86,8 @@ public class movePlayer : MonoBehaviour
         //checks position of finger is in bound box
         if (fingerPos.x <= 2.4 && fingerPos.x > -2.4 && fingerPos.y <= 3f)
         {
-            this.transform.position = new Vector3(fingerPos.x, fingerPos.y + 1.5f);
 
+            this.transform.position = new Vector3(fingerPos.x, fingerPos.y + 1f);
             // Allow text to follow player----------------------------
 
             //atomTimerText.gameObject.SetActive(true);
@@ -99,14 +104,14 @@ public class movePlayer : MonoBehaviour
             if (fingerPos.y > 3f)
                 this.transform.position = new Vector3(2.4f, 4.5f);
              else
-                this.transform.position = new Vector3(2.4f, fingerPos.y + 1.5f);
+                this.transform.position = new Vector3(2.4f, fingerPos.y + 1f);
         }
         else if (fingerPos.x < -2.4)
         { 
             if (fingerPos.y > 3f)
                 this.transform.position = new Vector3(-2.4f, 4.5f);
             else
-                this.transform.position = new Vector3(-2.4f, fingerPos.y + 1.5f);
+                this.transform.position = new Vector3(-2.4f, fingerPos.y + 1f);
         }
         else if(fingerPos.y > 3f)
         {

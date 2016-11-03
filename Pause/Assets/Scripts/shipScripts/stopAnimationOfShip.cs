@@ -33,6 +33,7 @@ public class stopAnimationOfShip : MonoBehaviour {
         {
             if (!(player == null))
             {
+                
                 player.StartPlayback();
             }
         }

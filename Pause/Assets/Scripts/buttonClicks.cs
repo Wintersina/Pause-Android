@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 public class buttonClicks : MonoBehaviour {
 
     private string gameS1;
@@ -17,7 +15,6 @@ public class buttonClicks : MonoBehaviour {
         //hide the ads at the start
         if (AdMob.isAdsShowwing)
             AdMob.hide();
-     
     }
 
     // Update is called once per frame
@@ -42,10 +39,6 @@ public class buttonClicks : MonoBehaviour {
                 return;
             }
         }
-        // This is ads method to show ads when player is dead.
-    
-
-
     }
     public void replay()
     {

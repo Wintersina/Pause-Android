@@ -59,9 +59,10 @@ public class rotateRight : MonoBehaviour {
         {
             // each ship takes off to its own unique location
             boost[shipSelected].gameObject.SetActive(true);
-           if(shipSelected >= 6)
+           if(shipSelected %2 == 0)
             {
-                shopingShips.ships[shipSelected].transform.position = Vector3.MoveTowards(shopingShips.ships[shipSelected].gameObject.transform.position, liftOffRight.transform.position, .1f);
+
+              shopingShips.ships[shipSelected].transform.position = Vector3.MoveTowards(shopingShips.ships[shipSelected].gameObject.transform.position, liftOffRight.transform.position, .1f);
             }
             else
             {

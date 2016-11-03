@@ -31,8 +31,8 @@ public class Hints : MonoBehaviour {
     void Start() {
 
         liftOffLeft = GameObject.Find("LiftOffLeft");
-        ship5 = GameObject.Find("ship5");
-        script = GameObject.Find("ship5").GetComponent<movePlayerInTut>();
+        ship5 = GameObject.Find("ship1");
+        script = GameObject.Find("ship1").GetComponent<movePlayerInTut>();
 
         pausedIcon = GameObject.Find("paused");
 

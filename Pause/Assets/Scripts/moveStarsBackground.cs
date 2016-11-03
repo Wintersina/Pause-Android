@@ -45,11 +45,13 @@ public class moveStarsBackground : MonoBehaviour {
             delayPauseMenuTimer -= Time.deltaTime;
             showPaused(false);
             moveBackground();
-        }
+        }// show replayand menu button when player runs out of pauses
         else if (score.pauseCounter <= 0 && !buttonClicks.playerDied)
         {
             delayPauseMenuTimer -= Time.deltaTime;
             showPaused(false);
+            replyB.gameObject.SetActive(true);
+            mainMenuB.gameObject.SetActive(true);
             moveBackground();
         }
         else {

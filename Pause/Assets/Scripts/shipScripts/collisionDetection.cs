@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using GooglePlayGames;
-using UnityEngine.SocialPlatforms;
 
 
 public class collisionDetection : MonoBehaviour {
@@ -17,6 +14,8 @@ public class collisionDetection : MonoBehaviour {
     public Text hypeText;
     public Text boostText;
     private int atomCounter;
+    public static int lifeCounter;
+    public static int MAXLIFE;
     //private string[] savedString = new string[12];
 
     public GameObject shield;
@@ -26,11 +25,11 @@ public class collisionDetection : MonoBehaviour {
     public GameObject boost;
     // Use this for initialization
 
-    private AudioSource boostSound, astroidExpSound;
+    public AudioSource boostSound, astroidExpSound;
 
 	void Start () {
 
-
+        MAXLIFE = 3;
         // Fills the needed componets for this player.
         atomTimerText = GameObject.Find("gotAtomText").GetComponent<Text>();
         hypeText = GameObject.Find("hypeText").GetComponent<Text>();
@@ -53,6 +52,7 @@ public class collisionDetection : MonoBehaviour {
         // empty out any text or counters
         atomTimerText.text = "";
         atomCounter = 0;
+        lifeCounter = 0;
 
         // create an array of  string for  hyped words
         /*
@@ -159,33 +159,42 @@ public class collisionDetection : MonoBehaviour {
                 // open memory and remove leftovers
             }
             else {
+                lifeCounter += 1;
+                //change sprite
+
+
+
                 Vector3 shipPos = this.gameObject.transform.position;
                 Quaternion shipRot = this.gameObject.transform.rotation;
 
                 // kill the player
                 GameObject exp = Instantiate(explosionAnimation, shipPos, shipRot) as GameObject;
-       
+
+
                 //exp.transform.position = hit.gameObject.transform.position;
-                buttonClicks.playerDied = true;
+                if (lifeCounter >= MAXLIFE)
+                {
+                    buttonClicks.playerDied = true;
+                    //--------------------FIRST DEATH ACHIVEMENT-------##01----------------------------------------
+                    achievementAPICalls.achievement_first_death();
+                    //-------------------------------------------------------------------------------------------
+                    //--------------------5th DEATH ACHIVEMENT-------##02----------------------------------------
+                    achievementAPICalls.achievement_death_2();
+                    //--------------------------------------------------------------------------------------------
+                    //--------------------10th DEATH ACHIVEMENT-------##03----------------------------------------
+                    achievementAPICalls.achievement_death_3();
+                    //--------------------------------------------------------------------------------------------
+                    //--------------------50th DEATH ACHIVEMENT-------##04----------------------------------------
+                    achievementAPICalls.achievement_death_4();
+                    //--------------------100th DEATH ACHIVMENT---------------------------------------------------
+                    achievementAPICalls.achievement_death_5();
 
-
-                //--------------------FIRST DEATH ACHIVEMENT-------##01----------------------------------------
-                achievementAPICalls.achievement_first_death();
-                //-------------------------------------------------------------------------------------------
-                //--------------------5th DEATH ACHIVEMENT-------##02----------------------------------------
-                achievementAPICalls.achievement_death_2();
-                //--------------------------------------------------------------------------------------------
-                //--------------------10th DEATH ACHIVEMENT-------##03----------------------------------------
-                achievementAPICalls.achievement_death_3();
-                //--------------------------------------------------------------------------------------------
-                //--------------------50th DEATH ACHIVEMENT-------##04----------------------------------------
-                achievementAPICalls.achievement_death_4();
-                //--------------------100th DEATH ACHIVMENT---------------------------------------------------
-                achievementAPICalls.achievement_death_5();
-
-                achievementAPICalls.leaderboard_highest_speed_reached(Mathf.Round(moveBackGround.speed * 100));
-                Destroy(gameObject);
+                    achievementAPICalls.leaderboard_highest_speed_reached(Mathf.Round(moveBackGround.speed * 100));
+                    Destroy(gameObject);
+                }
+                Destroy(hit.gameObject);
                 Destroy(exp, 2);
+
             }
         }
         #endregion
