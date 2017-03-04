@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/tutorialS5.unity
+- path: Assets/shopS6.unity
   isLoaded: 1
   isActive: 1

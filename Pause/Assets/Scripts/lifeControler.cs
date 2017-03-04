@@ -15,6 +15,7 @@ public class lifeControler : MonoBehaviour {
         shipNames[0] = "non";
         shipNames[1] = "Proteus";
         shipNames[2] = "Amadeus";
+        shipNames[3] = "Darkwing";
 
         spriteControl = this.gameObject.GetComponent<SpriteRenderer>();
         if (this.gameObject.name.Contains("(Clone)"))
