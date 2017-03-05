@@ -8,7 +8,7 @@ public class shopingShips : MonoBehaviour {
     //if button is clicked move ship;
     public static bool buttonIsClicked;
 
-    public static int shipTotal = 3;
+    public static int shipTotal = 4;
     public static GameObject[] ships = new GameObject[shipTotal];
     public Button[] shipButtons = new Button[shipTotal];
     private string[] shipNames = new string[shipTotal];
@@ -38,6 +38,7 @@ public class shopingShips : MonoBehaviour {
         shipNames[0] = "non";
         shipNames[1] = "Proteus";
         shipNames[2] = "Amadeus";
+        shipNames[3] = "Darkwing";
 
         starDust.text = "Start Dust: " + PlayerPrefs.GetFloat("PlayerCurrecny").ToString("F2");
         buttonCanvis = GameObject.Find("Canvas");
@@ -49,7 +50,8 @@ public class shopingShips : MonoBehaviour {
         // initilizing the cost of ships. Each ship has a differnt cost
         shipCost[0] = 0;
         shipCost[1] = 0f;
-        shipCost[2] = 100f;
+        shipCost[2] = 0f;
+        shipCost[3] = 0f;
   
 
         
